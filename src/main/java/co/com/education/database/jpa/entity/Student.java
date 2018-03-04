@@ -1,5 +1,6 @@
 package co.com.education.database.jpa.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,19 +9,20 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity()
-@Table(name ="TEACHERS")
-public class Teacher {
+@Table(name ="STUDENTS")
+public class Student {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private int id;
+
 
     @Column(name="DOC_TYPE", nullable= false)
     private String docType;
@@ -38,8 +40,5 @@ public class Teacher {
     private String email;
 
     @Column(name="BIRTH_DATE", nullable= false)
-    private LocalDate  birthDate;
-
-
-
+    private LocalDate birthDate;
 }
