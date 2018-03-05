@@ -24,10 +24,85 @@ repositories {
 
 
 dependencies {
+
 	compile('org.springframework.boot:spring-boot-starter-web')
-	// runtime('mysql:mysql-connector-java')
 	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.13.Final'
 	compileOnly('org.projectlombok:lombok')
+	compile ("org.springframework.boot:spring-boot-starter-data-jpa:1.5.10.RELEASE")
+	compile (group: 'org.apache.commons', name: 'commons-io', version: '1.3.2')
+	compile (group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.2')
+	compile (group: 'org.apache.commons', name: 'commons-lang3', version: '3.7')
+	compile ('mysql:mysql-connector-java')
+	compile "org.projectlombok:lombok:1.16.16"
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('junit:junit:4.12')
+	testCompile ("org.mockito:mockito-core:2.+")
+	testCompile (group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3')
+	testCompile (group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3')
 }
+/*
+dependencies {
+    //compile "org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE"
+    springSecurity2 'org.springframework.security:spring-security-core:2.0.5.RELEASE'
+    compile "org.springframework:spring-jdbc:4.3.12.RELEASE"
+    compile "com.h2database:h2:1.4.196"
+    compile "org.projectlombok:lombok:1.16.16"
+    compile "com.mchange:c3p0:0.9.5.2"
+    compile "com.oracle:ojdbc6:11.2.0.2.0"
+    compile "com.swacorp.mx.JavaPasswordSDK:JavaPasswordSDK:6.0.4"
+    compile ("org.springframework.boot:spring-boot-starter-data-jpa:1.5.10.RELEASE") { exclude group:'org.springframework.boot', module:'spring-boot-starter'}
+    compile "org.springframework.boot:spring-boot-devtools:1.3.0.RELEASE"
+    compile  "org.springframework.security:spring-security-core:2.0.5.RELEASE"
+    compile ('com.swacorp.tbs:tbs-status-core:6.0.0') { exclude module: 'slf4j-log4j12' }
+    compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
+    compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.2'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile "javax.xml:jaxb-impl:2.1"
+    compile "org.jvnet.jaxb2_commons:jaxb-xjc:2.1.10.1"
+    compile "javax.xml:jaxb-impl:2.1"
+    compile "com.sun.xml.bind:jaxb1-impl:2.2.5-5"
+    compile "com.swacorp.tbs:tbs-jaxb-plugin:6.0.0"
+    compile ("com.swacorp.tbs:tbs-status-core:6.0.0"){
+        exclude group: 'org.slf4j'
+    }
+    compile ("com.swacorp.tbs:tbs-security-core:6.0.0"){
+        exclude group: 'org.springframework.security'
+    }
+    compile ("com.swacorp.tbs:tbs-security-ws-server:6.0.0"){
+        exclude group: 'org.springframework.security'
+    }
+    compile "org.apache.cxf:cxf-rt-transports-http:3.1.0"
+    compile "org.apache.cxf:cxf-rt-rs-extension-providers:3.1.0"
+    compile "org.apache.cxf:cxf-rt-rs-client:3.1.0"
+    compile OSS_CLIENT
+    compile CODA_HALE
+
+    compile group: 'org.meanbean', name: 'meanbean', version: '2.0.3'
+
+    compile ('org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE'){ exclude group: 'ch.qos.logback', module: 'logback-classic'}
+    compile ('org.springframework.boot:spring-boot-starter-log4j2:1.5.8.RELEASE')
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.10.0'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-jcl', version: '2.10.0'
+
+    compile group: 'net.sf.ehcache', name: 'ehcache', version: '2.10.4'
+    compile ('org.springframework.boot:spring-boot-starter-cache:1.5.10.RELEASE') { exclude group: 'ch.qos.logback', module: 'logback-classic'}
+
+    testCompile "org.mockito:mockito-core:2.+"
+    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+    testCompile group: 'nl.jqno.equalsverifier', name: 'equalsverifier', version: '2.4.3'
+    testCompile group: 'com.google.guava', name: 'guava', version: '23.0'
+
+    testCompile ('org.springframework.boot:spring-boot-starter-test:1.5.2.RELEASE') { exclude group: 'ch.qos.logback', module: 'logback-classic'}
+    testCompile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.2'
+    testCompile 'org.assertj:assertj-core:3.8.0'
+
+    testCompile files("src/main/environment/filesets/dev/")
+    testCompile files("src/main/environment/filesets/itest/")
+    testCompile files("src/main/environment/filesets/qa/")
+
+}
+*/

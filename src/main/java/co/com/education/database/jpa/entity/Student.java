@@ -1,6 +1,7 @@
 package co.com.education.database.jpa.entity;
 
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,4 +42,5 @@ public class Student {
 
     @Column(name="BIRTH_DATE", nullable= false)
     private LocalDate birthDate;
+
 }
