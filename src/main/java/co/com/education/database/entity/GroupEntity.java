@@ -1,4 +1,4 @@
-package co.com.education.database.jpa.entity;
+package co.com.education.database.entity;
 
 import lombok.Getter;
 import lombok.Setter;

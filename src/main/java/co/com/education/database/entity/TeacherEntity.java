@@ -1,4 +1,4 @@
-package co.com.education.database.jpa.entity;
+package co.com.education.database.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@Table(name = "STUDENTS")
-public class StudentEntity {
+@Table(name = "TEACHERS")
+public class TeacherEntity {
 
     @Id
     private Integer id;
