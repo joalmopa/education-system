@@ -1,6 +1,6 @@
-package co.com.education.database.jpa.repository;
+package co.com.education.database.repository;
 
-import co.com.education.database.jpa.entity.GroupEntity;
+import co.com.education.database.entity.GroupEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GroupRepository extends JpaRepository<GroupEntity, Integer> {
