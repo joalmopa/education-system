@@ -1,4 +1,4 @@
-package co.com.education.database.repositoryimpl;
+package co.com.education.database.gatewayimpl;
 
 import co.com.education.database.entity.CourseEntity;
 import co.com.education.database.repository.CourseRepository;
@@ -47,6 +47,7 @@ public class CourseRepositoryImpl implements CourseService {
     }
 
     public CourseEntity toEntity(Course core) {
+
         return new CourseEntity(core.getId(), core.getDescription());
     }
 }
