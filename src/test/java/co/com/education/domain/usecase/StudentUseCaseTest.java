@@ -21,7 +21,7 @@ import static org.mockito.Mockito.mock;
 @RunWith(MockitoJUnitRunner.class)
 public class StudentUseCaseTest {
 
-   private static final  int ID_STUDENT=12;
+    private static final  int ID_STUDENT=12;
 
     private StudentService studentService;
     private StudentUseCase studentUseCase;
@@ -40,7 +40,6 @@ public class StudentUseCaseTest {
     @Test
     public void shouldGetAllStudents()  {
 
-
         Mockito.when(studentService.getStudents()).thenReturn(getAllStudent());
 
         List<Student> students=studentUseCase.findStudents();
@@ -54,23 +53,29 @@ public class StudentUseCaseTest {
     }
 
     @Test
-    public void findStudentById() throws Exception {
+    public void shouldGetStudentById() throws Exception {
         Student student = getStudent(ID_STUDENT,"cc","3232","jovan", "323","", 10l);
         Mockito.when(studentService.getStudentById(ID_STUDENT)).thenReturn(student);
 
         Student studentReturn=studentUseCase.findStudentById(ID_STUDENT);
 
-        Mockito.verify(studentService).getStudentById(12);
+        Mockito.verify(studentService).getStudentById(ID_STUDENT);
         Assertions.assertThat(studentReturn.getId()).isEqualTo(ID_STUDENT);
-
-
-
-
 
     }
 
     @Test
-    public void saveOrUpdateStudent() throws Exception {
+    public void shouldSaveStudent() throws Exception {
+
+        Student student = getStudent(ID_STUDENT,"cc","3232","jovan", "323","", 10l);
+        Mockito.when(studentService.saveOrUpdateStudent(student)).thenReturn(student);
+
+        Student studentReturn=studentUseCase.saveOrUpdateStudent(student);
+
+        Mockito.verify(studentService).saveOrUpdateStudent(student);
+        Assertions.assertThat(studentReturn.getDocumentNumber()).isEqualTo(student.getDocumentNumber());
+
+
     }
 
     @Test
@@ -87,13 +92,7 @@ public class StudentUseCaseTest {
         );
     }
 
-    private Student getStudent( Integer id,
-             String documentType,
-             String documentNumber,
-             String name,
-             String phone,
-             String email, long years
-            ){
+    private Student getStudent( Integer id,String documentType,String documentNumber,String name,String phone,String email,long years){
 
         return Student.builder().id(id)
                 .documentType(documentType)

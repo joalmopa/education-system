@@ -1,8 +1,9 @@
 package co.com.education.database.repository;
 
 import co.com.education.database.entity.TeacherEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TeacherRepository extends CrudRepository<TeacherEntity, Integer> {
+public interface TeacherRepository extends JpaRepository<TeacherEntity, Integer> {
 
 }

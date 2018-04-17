@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StudentRepositoryImpl  implements StudentService{
+public class StudentGatewayImpl implements StudentService{
 
     @Autowired
     private StudentRepository studentRepository;
