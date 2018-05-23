@@ -2,9 +2,10 @@ package co.com.education.controller;
 
 
 
-import co.com.education.domain.entity.Course;
 import co.com.education.domain.entity.Student;
 import co.com.education.domain.usecase.StudentUseCase;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/education")
+@Api(description = "Endpoints for Students")
 public class StudentController {
 
     @Autowired
     StudentUseCase studentUseCase;
 
     @GetMapping(value = "/student")
+    @ApiOperation("return all Stundents")
     public ResponseEntity<List<Student>> getStudents() {
 
         List<Student> students = studentUseCase.findStudents();
