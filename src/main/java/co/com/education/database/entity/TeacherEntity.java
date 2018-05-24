@@ -1,7 +1,6 @@
 package co.com.education.database.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,7 +8,11 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@Table(name = "TEACHERS")
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Builder
+@Table(name = "TEACHER")
 public class TeacherEntity {
 
     @Id

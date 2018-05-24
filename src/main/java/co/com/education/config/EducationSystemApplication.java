@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"co.com.education.controller"})
+@ComponentScan({"co.com.education"})
 @EntityScan("co.com.education.database.entity")
 @EnableJpaRepositories("co.com.education.database.repository")
 
