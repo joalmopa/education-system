@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("co.com.education.database.entity")
 @EnableJpaRepositories("co.com.education.database.repository")
 
-@Import({ DomainBeans.class })
+@Import({ DomainBeans.class})
 @EnableConfigurationProperties
 public class EducationSystemApplication  extends SpringBootServletInitializer {
 

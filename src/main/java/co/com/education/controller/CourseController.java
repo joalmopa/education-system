@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,20 +23,19 @@ public class CourseController {
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/courses/{courseId}")
+    @GetMapping(value = "/course/{courseId}")
     public ResponseEntity<Course> getCourseById(@PathVariable("courseId") Integer courseId) {
         return new ResponseEntity<>(courseUseCase.findCourseById(courseId), HttpStatus.OK);
     }
 
-    @PostMapping(value="/courses")
+    @PostMapping(value="/course")
     public ResponseEntity<Course> save(@RequestBody Course course) {
         return new ResponseEntity<> (courseUseCase.saveOrUpdateCourse(course), HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/courses/{courseId}")
+    @DeleteMapping(value = "/course/{courseId}")
     public ResponseEntity<?> deleteCourse(@PathVariable("courseId") Integer courseId) {
         courseUseCase.deleteCourse(courseId);
         return new ResponseEntity<Course>(HttpStatus.NO_CONTENT);
     }
-
 }

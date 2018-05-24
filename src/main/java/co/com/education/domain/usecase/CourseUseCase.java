@@ -3,8 +3,6 @@ package co.com.education.domain.usecase;
 
 import co.com.education.domain.entity.Course;
 import co.com.education.domain.gateway.CourseService;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

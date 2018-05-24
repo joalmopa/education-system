@@ -12,5 +12,5 @@ public class Group {
 
     private Integer id;
     private String openYear;
-    private Course courseRecord;
+    private Course course;
 }
