@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 @Builder
-@Table(name = "TEACHER")
+@Table(name = "TEACHERS")
 public class TeacherEntity {
 
     @Id
@@ -37,4 +37,7 @@ public class TeacherEntity {
 
     @Column(name="BIRTH_DATE")
     private LocalDate birthDate;
+
+    @Column(name="GENDER")
+    private String gender;
 }

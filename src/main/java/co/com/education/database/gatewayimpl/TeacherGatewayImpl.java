@@ -1,9 +1,7 @@
 package co.com.education.database.gatewayimpl;
 
-import co.com.education.database.entity.StudentEntity;
 import co.com.education.database.entity.TeacherEntity;
 import co.com.education.database.repository.TeacherRepository;
-import co.com.education.domain.entity.Student;
 import co.com.education.domain.entity.Teacher;
 import co.com.education.domain.gateway.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,6 @@ public class TeacherGatewayImpl implements TeacherService {
 
     @Override
     public Teacher saveOrUpdateTeacher(Teacher teacher) {
-
         return toCore(teacherRepository.save(toEntity(teacher)));
     }
 
@@ -48,12 +45,13 @@ public class TeacherGatewayImpl implements TeacherService {
                 .documentType(entity.getDocumentType())
                 .birthDate(entity.getBirthDate())
                 .phone(entity.getPhone())
+                .gender(entity.getGender())
                 .build();
     }
 
     public TeacherEntity toEntity(Teacher core) {
 
         return new TeacherEntity(core.getId(), core.getDocumentType(), core.getDocumentNumber(), core.getName(),
-                core.getPhone(),core.getEmail(),core.getBirthDate());
+                core.getPhone(),core.getEmail(),core.getBirthDate(), core.getGender());
     }
 }

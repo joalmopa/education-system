@@ -26,5 +26,4 @@ public class TeacherUseCase {
         teacherService.deleteTeacher(teacherID);
     }
 
-
 }

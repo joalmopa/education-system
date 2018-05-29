@@ -5,13 +5,12 @@ import co.com.education.database.entity.CourseEntity;
 import co.com.education.database.repository.CourseRepository;
 import co.com.education.domain.entity.Course;
 import org.hamcrest.core.Is;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -22,7 +21,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
-@ContextConfiguration(classes = { AnnotationConfigContextLoader.class, H2JpaConfig.class })
+@SpringBootTest(classes = { AnnotationConfigContextLoader.class, H2JpaConfig.class })
 @TestPropertySource("classpath:/application-test.properties")
 public class CourseGatewayImplTest {
 
@@ -31,7 +30,6 @@ public class CourseGatewayImplTest {
 
     @Autowired
     private CourseGatewayImpl courseGatewayImpl;
-
 
     @Before
     public void setUp() throws Exception {
@@ -60,26 +58,25 @@ public class CourseGatewayImplTest {
     @Test
     public void shouldGetOneCourseById() throws Exception {
 
-        CourseEntity courseEntityOne = courseRepository.save(getCourseEntity(1, "Course One"));
-        CourseEntity courseEntityTwo = courseRepository.save(getCourseEntity(2, "Course Two"));
-        CourseEntity courseEntityThree = courseRepository.save(getCourseEntity(3, "Course Three"));
+        CourseEntity courseEntityOne = courseRepository.save(getCourseEntity(4, "Course One"));
+        CourseEntity courseEntityTwo = courseRepository.save(getCourseEntity(5, "Course Two"));
+        CourseEntity courseEntityThree = courseRepository.save(getCourseEntity(6, "Course Three"));
 
         Course course = courseGatewayImpl.getCourseById(courseEntityTwo.getId());
 
-        assertThat(course.getId(), Is.is(2));
+        assertThat(course.getId(), Is.is(5));
         assertThat(course.getDescription(), Is.is("Course Two"));
     }
 
     @Test
     public void shouldSaveACourse() throws Exception {
 
-        Course course = getCourse(10, "Course 601");
-
+        Course course = getCourse(6, "Course 601");
         Course courseSaved = courseGatewayImpl.saveOrUpdateCourse(course);
         List<Course> courses = courseGatewayImpl.getCourses();
 
-        assertThat(courses.size(), Is.is(1));
-        assertThat(courseSaved.getId(), Is.is(1));
+        assertThat(courses.size(), Is.is(6));
+        assertThat(courseSaved.getId(), Is.is(6));
         assertThat(courseSaved.getDescription(), Is.is("Course 601"));
     }
 
@@ -120,7 +117,6 @@ public class CourseGatewayImplTest {
     public void shouldGetACourseEntity() throws Exception {
 
         Course course = getCourse(8, "Course 801");
-
         CourseEntity courseEntity = courseGatewayImpl.toEntity(course);
 
         assertThat(courseEntity.getId(), Is.is(course.getId()));
@@ -131,13 +127,11 @@ public class CourseGatewayImplTest {
     public void shouldGetACourse() throws Exception {
 
         CourseEntity courseEntity = getCourseEntity(11, "Course 123");
-
         Course course = courseGatewayImpl.toCore(courseEntity);
 
         assertThat(courseEntity.getId(), Is.is(course.getId()));
         assertThat(courseEntity.getDescription(), Is.is(course.getDescription()));
     }
-
 
     private CourseEntity getCourseEntity(int id, String description) {
         return CourseEntity.builder()

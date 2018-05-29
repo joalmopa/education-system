@@ -1,7 +1,6 @@
 package co.com.education.controller;
 
 
-
 import co.com.education.domain.entity.Teacher;
 import co.com.education.domain.usecase.TeacherUseCase;
 import io.swagger.annotations.Api;
@@ -16,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/education")
 @Api(description = "Endpoints for Teachers")
-public class TeacherControler {
+public class TeacherController {
 
     @Autowired
     TeacherUseCase teacherUseCase;

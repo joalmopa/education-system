@@ -20,6 +20,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EntityScan("co.com.education.database.entity")
 @PropertySource("classpath:/application-test.properties")
+@ComponentScan({"co.com.education.database.gatewayimpl"})
 @EnableJpaRepositories("co.com.education.database.repository")
 @Import({ DomainBeans.class})
 public class H2JpaConfig {
@@ -65,6 +66,7 @@ public class H2JpaConfig {
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("database.h2.ddl-auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("database.h2.dialect"));
         hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("database.h2.show-sql"));
+
         return hibernateProperties;
     }
 }
