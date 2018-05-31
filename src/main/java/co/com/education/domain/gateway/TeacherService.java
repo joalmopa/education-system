@@ -14,6 +14,8 @@ public interface TeacherService {
 
     void deleteTeacher(Integer teacherId);
 
+    List<Teacher> getTeachersByGender(String gender);
+
 
 
 }

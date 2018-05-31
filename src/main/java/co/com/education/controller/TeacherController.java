@@ -1,6 +1,7 @@
 package co.com.education.controller;
 
 
+import co.com.education.domain.entity.Student;
 import co.com.education.domain.entity.Teacher;
 import co.com.education.domain.usecase.TeacherUseCase;
 import io.swagger.annotations.Api;
@@ -32,5 +33,25 @@ public class TeacherController {
     @ApiOperation("Save a teacher")
     public ResponseEntity<Teacher> save(@RequestBody Teacher teacher){
         return new ResponseEntity<>(teacherUseCase.saveOrUpdateTeacher(teacher), HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/teacher/{teacherId}")
+    @ApiOperation("return a teacher by Id")
+    public ResponseEntity<Teacher> getTeacherById(@PathVariable("teacherId") Integer teacherId) {
+        return new ResponseEntity<>(teacherUseCase.findTeacherById(teacherId), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/teacher/{teacherId}")
+    @ApiOperation("Delete a teacher by Id")
+    public ResponseEntity<?> deleteTeacher(@PathVariable("teacherId") Integer teacherId) {
+        teacherUseCase.deleteTeacher(teacherId);
+        return new ResponseEntity<Teacher>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping(value = "/teacher/gender/{gender}")
+    @ApiOperation("return list of teachers by gender")
+    public ResponseEntity<List<Teacher>> getTeacherByGender(@PathVariable("gender") String gender){
+        List<Teacher> teachers = teacherUseCase.findTeachersByGender(gender);
+        return new ResponseEntity<>(teachers, HttpStatus.OK);
     }
 }
