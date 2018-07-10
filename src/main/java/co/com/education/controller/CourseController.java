@@ -25,7 +25,8 @@ public class CourseController {
 
     @GetMapping(value = "/course/{courseId}")
     public ResponseEntity<Course> getCourseById(@PathVariable("courseId") Integer courseId) {
-        return new ResponseEntity<>(courseUseCase.findCourseById(courseId), HttpStatus.OK);
+        Course course = courseUseCase.findCourseById(courseId);
+        return new ResponseEntity<>(course, ((course != null) ? HttpStatus.OK : HttpStatus.NOT_FOUND));
     }
 
     @PostMapping(value="/course")
@@ -36,6 +37,7 @@ public class CourseController {
     @DeleteMapping(value = "/course/{courseId}")
     public ResponseEntity<?> deleteCourse(@PathVariable("courseId") Integer courseId) {
         courseUseCase.deleteCourse(courseId);
-        return new ResponseEntity<Course>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Course>(HttpStatus.OK);
+
     }
 }
