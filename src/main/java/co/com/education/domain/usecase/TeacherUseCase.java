@@ -26,4 +26,6 @@ public class TeacherUseCase {
         teacherService.deleteTeacher(teacherID);
     }
 
+    public List<Teacher> findTeachersByGender(String gender){return teacherService.getTeachersByGender(gender);}
+
 }

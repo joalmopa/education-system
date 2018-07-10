@@ -7,6 +7,7 @@ import co.com.education.domain.gateway.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class TeacherGatewayImpl implements TeacherService {
@@ -21,17 +22,43 @@ public class TeacherGatewayImpl implements TeacherService {
 
     @Override
     public Teacher getTeacherById(Integer teacherId) {
-        return toCore(teacherRepository.findOne(teacherId));
+        return toCoreOptional(Optional.ofNullable(teacherRepository.findOne(teacherId)));
     }
 
     @Override
     public Teacher saveOrUpdateTeacher(Teacher teacher) {
-        return toCore(teacherRepository.save(toEntity(teacher)));
+        return toCoreOptional(Optional.ofNullable(teacherRepository.save(toEntity(teacher))));
     }
 
     @Override
-    public void deleteTeacher(Integer teacherId) {
-        teacherRepository.delete(teacherId);
+    public void deleteTeacher(Integer teacherId) {teacherRepository.delete(teacherId);}
+
+    @Override
+    public List<Teacher> getTeachersByGender(String gender) {
+         return  teacherRepository.findAll().stream().map(this::toCore)
+                 .filter(t -> t.getGender().equals(gender))
+                 .collect(Collectors.toList());
+    }
+
+
+    public Teacher toCoreOptional(Optional<TeacherEntity>  op){
+        if(op.isPresent()){
+            return Teacher.builder()
+                    .id(op.get().getId())
+                    .name(op.get().getName())
+                    .email(op.get().getEmail())
+                    .documentNumber(op.get().getDocumentNumber())
+                    .documentType(op.get().getDocumentType())
+                    .birthDate(op.get().getBirthDate())
+                    .phone(op.get().getPhone())
+                    .gender(op.get().getGender())
+                    .build();
+
+        }else{
+            System.out.println(" ******* no hay datos *********** ");
+            return null;
+        }
+
 
     }
 
