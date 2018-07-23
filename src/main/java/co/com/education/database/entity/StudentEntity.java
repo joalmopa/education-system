@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 @Table(name = "STUDENTS")
 public class StudentEntity {
 
@@ -36,4 +37,7 @@ public class StudentEntity {
 
     @Column(name="BIRTH_DATE")
     private LocalDate birthDate;
+
+    @Column(name = "GENDER")
+    private String gender;
 }

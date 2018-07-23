@@ -47,12 +47,13 @@ public class StudentGatewayImpl implements StudentService{
                 .documentType(entity.getDocumentType())
                 .documentNumber(entity.getDocumentNumber())
                 .birthDate(entity.getBirthDate())
+                .gender(entity.getGender())
                 .build();
     }
 
     public StudentEntity toEntity(Student core) {
 
         return new StudentEntity(core.getId(), core.getDocumentType(), core.getDocumentNumber(), core.getName(),
-                core.getPhone(),core.getEmail(),core.getBirthDate());
+                core.getPhone(),core.getEmail(),core.getBirthDate(), core.getGender());
     }
 }
