@@ -1,10 +1,6 @@
 package co.com.education.database.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 @Table(name = "STUDENTS")
 public class StudentEntity {
 
@@ -45,4 +42,7 @@ public class StudentEntity {
 
     @Column(name="BIRTH_DATE")
     private LocalDate birthDate;
+
+    @Column(name = "GENDER")
+    private String gender;
 }
