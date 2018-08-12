@@ -1,7 +1,11 @@
 package co.com.education.domain.entity;
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,6 +15,6 @@ import lombok.*;
 public class Group {
 
     private Integer id;
+    private String description;
     private String openYear;
-    private Course course;
 }

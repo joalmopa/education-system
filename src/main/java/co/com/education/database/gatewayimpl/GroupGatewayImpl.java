@@ -16,9 +16,6 @@ public class GroupGatewayImpl implements GroupService {
     @Autowired
     private GroupRepository groupRepository;
 
-    @Autowired
-    private CourseGatewayImpl courseGatewayImpl;
-
 
     @Override
     public List<Group> getGroups() {
@@ -45,17 +42,16 @@ public class GroupGatewayImpl implements GroupService {
     public Group toCore(GroupEntity entity) {
         return Group.builder()
                 .id(entity.getId())
+                .description(entity.getDescription())
                 .openYear(entity.getOpenYear())
-                .course(courseGatewayImpl.toCore(entity.getCourse()))
                 .build();
     }
 
     public GroupEntity toEntity(Group core) {
         return GroupEntity.builder()
                 .id(core.getId())
+                .description(core.getDescription())
                 .openYear(core.getOpenYear())
-                .course(courseGatewayImpl.toEntity(core.getCourse()))
-                .id(core.getCourse().getId())
                 .build();
     }
 }

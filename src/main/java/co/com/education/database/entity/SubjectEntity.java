@@ -22,8 +22,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "courses")
-public class CourseEntity  implements Serializable {
+@Table(name = "subjects")
+public class SubjectEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

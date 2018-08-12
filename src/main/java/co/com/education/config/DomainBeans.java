@@ -1,14 +1,14 @@
 package co.com.education.config;
 
-import co.com.education.database.gatewayimpl.CourseGatewayImpl;
+import co.com.education.database.gatewayimpl.SubjectGatewayImpl;
 import co.com.education.database.gatewayimpl.GroupGatewayImpl;
 import co.com.education.database.gatewayimpl.StudentGatewayImpl;
 import co.com.education.database.gatewayimpl.TeacherGatewayImpl;
-import co.com.education.domain.gateway.CourseService;
+import co.com.education.domain.gateway.SubjectService;
 import co.com.education.domain.gateway.GroupService;
 import co.com.education.domain.gateway.StudentService;
 import co.com.education.domain.gateway.TeacherService;
-import co.com.education.domain.usecase.CourseUseCase;
+import co.com.education.domain.usecase.SubjectUseCase;
 import co.com.education.domain.usecase.GroupUseCase;
 import co.com.education.domain.usecase.StudentUseCase;
 import co.com.education.domain.usecase.TeacherUseCase;
@@ -26,8 +26,8 @@ public class DomainBeans {
 
 
     @Bean
-    public CourseService courseService() {
-        return new CourseGatewayImpl();
+    public SubjectService courseService() {
+        return new SubjectGatewayImpl();
     }
 
     @Bean
@@ -37,8 +37,8 @@ public class DomainBeans {
 
 
     @Bean
-    public CourseUseCase courseUseCase(CourseService courseService) {
-        return new CourseUseCase(courseService);
+    public SubjectUseCase courseUseCase(SubjectService subjectService) {
+        return new SubjectUseCase(subjectService);
     }
 
     @Bean
