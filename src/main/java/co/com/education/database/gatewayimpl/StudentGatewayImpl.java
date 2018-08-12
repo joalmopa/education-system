@@ -5,10 +5,12 @@ import co.com.education.database.repository.StudentRepository;
 import co.com.education.domain.entity.Student;
 import co.com.education.domain.gateway.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class StudentGatewayImpl implements StudentService{
 
     @Autowired
@@ -47,12 +49,13 @@ public class StudentGatewayImpl implements StudentService{
                 .documentType(entity.getDocumentType())
                 .documentNumber(entity.getDocumentNumber())
                 .birthDate(entity.getBirthDate())
+                .gender(entity.getGender())
                 .build();
     }
 
     public StudentEntity toEntity(Student core) {
 
         return new StudentEntity(core.getId(), core.getDocumentType(), core.getDocumentNumber(), core.getName(),
-                core.getPhone(),core.getEmail(),core.getBirthDate());
+                core.getPhone(),core.getEmail(),core.getBirthDate(), core.getGender());
     }
 }
