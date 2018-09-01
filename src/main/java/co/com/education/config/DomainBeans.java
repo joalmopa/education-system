@@ -26,7 +26,7 @@ public class DomainBeans {
 
 
     @Bean
-    public SubjectService courseService() {
+    public SubjectService subjectService() {
         return new SubjectGatewayImpl();
     }
 
@@ -37,7 +37,7 @@ public class DomainBeans {
 
 
     @Bean
-    public SubjectUseCase courseUseCase(SubjectService subjectService) {
+    public SubjectUseCase subjectUseCase(SubjectService subjectService) {
         return new SubjectUseCase(subjectService);
     }
 

@@ -15,7 +15,6 @@ public class SubjectUseCase {
         this.subjectService = subjectService;
     }
 
-
     public List<Subject> findSubjects() {
         return subjectService.getSubjects();
     }
