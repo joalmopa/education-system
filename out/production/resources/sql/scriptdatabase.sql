@@ -63,8 +63,10 @@ create table STUDENTS_X_GROUP
     ID_GROUP        INT              not null,
 	ID_STUDENT      INT              not null,
     MARK       		DECIMAL(4,2)     null,
+    IDPERIODO     INT              NOT NULL,
     constraint STUDENTS_X_GROUP primary key (ID),
 	FOREIGN KEY (ID_GROUP) REFERENCES GROUPS(id),
-	FOREIGN KEY (ID_STUDENT) REFERENCES STUDENTS(id)
+	FOREIGN KEY (ID_STUDENT) REFERENCES STUDENTS(id),
+	FOREIGN KEY (IDPERIODO) REFERENCES PERIODO(IDPERIODO);
 )
 /

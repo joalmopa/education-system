@@ -31,7 +31,9 @@ public class StudentGatewayImplTest {
     private StudentRepository studentRepository;
 
     @Autowired
+
     private StudentGatewayImpl studentGatewayImpl;
+
 
     @Before
     public void setUp() throws Exception {
@@ -43,7 +45,9 @@ public class StudentGatewayImplTest {
     public void shouldGetAStudent() throws Exception {
 
         StudentEntity studentEntity = getStudentEntity(11, "jose","123", "M");
+
         Student student = studentGatewayImpl.toCore(studentEntity);
+
 
         assertThat(studentEntity.getId(), Is.is(student.getId()));
         assertThat(studentEntity.getName(), Is.is(student.getName()));
@@ -55,7 +59,9 @@ public class StudentGatewayImplTest {
         StudentEntity studentEntityTwo = studentRepository.save(getStudentEntity(2, "david","1234", "M"));
         StudentEntity  studentEntityThree = studentRepository.save(getStudentEntity(3, "pedro","12345", "M"));
 
+
         List<Student> students = studentGatewayImpl.getStudents();
+
 
         assertThat(students.size(), Is.is(3));
         assertThat(students.get(0).getId(), Is.is(4));
@@ -76,6 +82,7 @@ public class StudentGatewayImplTest {
 
         Student student = studentGatewayImpl.getStudentById(studentEntityThree.getId());
 
+
         assertThat(student.getId(), Is.is(3));
         assertThat(student.getName(), Is.is("pedro"));
     }
@@ -89,8 +96,10 @@ public class StudentGatewayImplTest {
 
         Student student = getStudent(7, "jose marco","123", "M");
 
+
         Student studentUpdate = studentGatewayImpl.saveOrUpdateStudent(student);
         List<Student> students = studentGatewayImpl.getStudents();
+
 
         assertThat(students.size(), Is.is(3));
         assertThat(studentUpdate.getId(), Is.is(7));
